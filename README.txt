@@ -38,6 +38,11 @@ projeto-login/
 └── sql
      └── banco.sql
 
+Versão das tecnologias utilizadas para teste
+Apache: 2.4.62.1
+PHP: 8.3.14
+MYSQL: 9.1.0
+
 Instalação:
 
 Clone o repositório para o seu ambiente local.
