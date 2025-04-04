@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 07, 2025 at 11:33 AM
+-- Generation Time: Apr 04, 2025 at 05:07 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -34,16 +34,11 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(191) NOT NULL,
   `senha` varchar(191) NOT NULL,
   `is_admin` tinyint NOT NULL DEFAULT '0',
+  `reset_token` varchar(255) DEFAULT NULL,
+  `reset_token_expiry` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `is_admin`) VALUES
-(4, 'Teste2', 'teste2@teste.com', '$2y$10$xyxin0IPkXdIlqmVOzEqN.SJ8pvxWbkMjZBNka4tq91Nu3MX8yHJm', 0);
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -28,13 +28,19 @@ projeto-login/
 │   ├── cadastro.php
 │   ├── login.php
 │   ├── recuperar_senha.php
-│   └── gerenciamento_usuarios.php
+│   ├── logout.php
+│   ├── processar_reset.php
+│   └── solicitar_reset.php
+├── composer.json
+├── composer.lock
+├── vendor/
 ├── index.html
 ├── cadastro.html
 ├── recuperar_senha.html
+├── redefinir_senha.html
 ├── gerenciamento_usuarios.html
+├── redefinir_senha.php
 ├── welcome.html
-├── logout.php
 └── sql
      └── banco.sql
 
@@ -48,7 +54,8 @@ Instalação:
 Clone o repositório para o seu ambiente local.
 Crie um banco de dados MySQL chamado usuarios.
 Importe o arquibo banco.sql usuarios.
-Configure as credenciais do banco de dados nos arquivos PHP (pasta php, nos arquivos login.php e cadastro.php).
+Configure as credenciais do banco de dados nos arquivos PHP (pasta php, nos arquivos login.php ecadastro.php).
+Configure as credenciais do seu email no arquivo solicitar_reset.php da past PHP.
 Inicie um servidor web (como o WAMP ou XAMPP) e acesse a página index.html no seu navegador.
 Como Usar:
 
