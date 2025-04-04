@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Atualizar a senha e invalidar o token
         $update_sql = "UPDATE usuarios SET senha = ?, reset_token = NULL, reset_token_expiry = NULL WHERE id = ?";
         $update_stmt = $conn->prepare($update_sql);
-        $update_stmt->bind_param("ssi", $senha_hash, $user_id);
+        $update_stmt->bind_param("si", $senha_hash, $user_id);
 
         if ($update_stmt->execute()) {
             echo "Senha redefinida com sucesso! Você pode fazer login agora.";

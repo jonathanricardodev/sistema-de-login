@@ -47,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $body = "Clique no link abaixo para redefinir sua senha:\n\n" . $reset_link . "\n\nEste link é válido por 1 hora.";
             $from_email = 'sistemaloginimpacta@gmail.com';
             $from_name = 'Sistema de Login Impacta';
-            $smtp_username = 'sistemaloginimpacta@gmail.com';
-            $smtp_password = 'jtiazwnkkkxtguie';
+            $smtp_username = 'email';
+            $smtp_password = 'senha';
 
             // *** CRIANDO A INSTÂNCIA DO PHPMailer AQUI ***
             $mail = new PHPMailer(true);
@@ -66,6 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Remetente e Destinatário
                 $mail->setFrom($from_email, $from_name);
                 $mail->addAddress($email);
+                $mail->isHTML(false);
+                $mail->CharSet = 'UTF-8'; // Adicione esta linha
                 $mail->Subject = $subject;
                 $mail->Body = $body;
 
