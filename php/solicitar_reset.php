@@ -45,10 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $reset_link = "http://localhost/redefinir_senha.php?token=" . $token;
             $subject = "Recuperação de Senha";
             $body = "Clique no link abaixo para redefinir sua senha:\n\n" . $reset_link . "\n\nEste link é válido por 1 hora.";
-            $from_email = 'sistemaloginimpacta@gmail.com';
+            $from_email = 'example_email@gmail.com';
             $from_name = 'Sistema de Login Impacta';
-            $smtp_username = 'email';
-            $smtp_password = 'senha';
+            $smtp_username = 'example_email@gmail.com';
+            $smtp_password = 'password';
 
             // *** CRIANDO A INSTÂNCIA DO PHPMailer AQUI ***
             $mail = new PHPMailer(true);

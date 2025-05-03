@@ -22,7 +22,7 @@
             echo '<p>Link de redefinição inválido.</p>';
         }
         ?>
-        <p><a href="index.html">Voltar para o login</a></p>
+        <p><a href="index.php">Voltar para o login</a></p>
     </div>
     <script src="js/script.js"></script>
 </body>

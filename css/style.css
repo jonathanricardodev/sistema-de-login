@@ -80,6 +80,24 @@ p {
     animation-iteration-count: 1;
 }
 
+.admin-btn {
+    background-color: #2196f3;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-btn:hover {
+    background-color: #0d8ae4;
+  }
+  
+
 @keyframes shake {
     0% { transform: translateX(0); }
     10% { transform: translateX(-5px); }
@@ -89,3 +107,4 @@ p {
     90% { transform: translateX(-5px); }
     100% { transform: translateX(0); }
 }
+

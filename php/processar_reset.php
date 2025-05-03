@@ -33,22 +33,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         $user_id = $user['id'];
 
-        // Hash da nova senha
         $senha_hash = password_hash($nova_senha, PASSWORD_DEFAULT);
 
-        // Atualizar a senha e invalidar o token
         $update_sql = "UPDATE usuarios SET senha = ?, reset_token = NULL, reset_token_expiry = NULL WHERE id = ?";
         $update_stmt = $conn->prepare($update_sql);
         $update_stmt->bind_param("si", $senha_hash, $user_id);
 
         if ($update_stmt->execute()) {
             echo "Senha redefinida com sucesso! Você pode fazer login agora.";
-            // Redirecionar para a página de login após alguns segundos
-            header("Refresh: 3;url=../index.html");
+            header("Refresh: 3;url=../index.php");
             exit;
         } else {
             echo "Erro ao redefinir a senha.";
-            // Log do erro para depuração
         }
         $update_stmt->close();
     } else {

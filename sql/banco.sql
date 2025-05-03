@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 04, 2025 at 05:07 PM
+-- Generation Time: May 03, 2025 at 09:01 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -38,7 +38,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `reset_token_expiry` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `is_admin`, `reset_token`, `reset_token_expiry`) VALUES
+(17, 'Jonathan Ricardo', 'imbinaryz@gmail.com', '$2y$10$fyyUXzQTtSoMHbeluLucW.8vNrfVDGKJquty3PEBRAgzBIUTdpBAi', 1, NULL, NULL),
+(18, 'Marcia', 'marcia@gmail.com', '$2y$10$vXa.gcAcA3IwMQUwkn6D3OcsWz7U2pYc56xTfoUBSiNGiZjhL/iM6', 0, NULL, NULL),
+(21, 'Joao Cesar', 'joao@gmail.com', '$2y$10$x6Z5MjnujN9QU/5aaKCu7u3c5hKagPKq7383ou38jMKTnLwComqqO', 0, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

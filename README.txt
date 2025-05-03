@@ -1,71 +1,88 @@
-Este projeto é um sistema web completo para gerenciamento de usuários, desenvolvido com HTML, CSS, JavaScript, PHP e MySQL. Ele oferece funcionalidades de login, cadastro, recuperação de senha e gerenciamento de usuários, incluindo suporte para usuários administradores.
+Sistema de Login - Projeto Web Completo
+
+Este projeto é um sistema web completo para gerenciamento de usuários, desenvolvido com HTML, CSS, JavaScript, PHP e MySQL. Ele oferece funcionalidades de login, cadastro, recuperação de senha e administração de usuários, com suporte para usuários administradores.
 
 Funcionalidades:
 
-Login: Autenticação de usuários com verificação de credenciais no banco de dados.
-Cadastro: Criação de novas contas de usuário com validação de dados e armazenamento seguro de senhas (hash).
-Recuperação de Senha: Envio de links de recuperação de senha para o email dos usuários.
-Gerenciamento de Usuários: Listagem e gerenciamento de usuários existentes (exclusivo para administradores).
-Controle de Acesso: Separação de usuários normais e administradores, com páginas de boas-vindas e administração específicas.
-Alertas e Feedback: Exibição de alertas e mensagens de erro para melhorar a experiência do usuário.
-Efeito de Tremor: efeito de tremor no campo de senha quando o usuário erra a senha.
-Persistencia de dados: o campo de email continua preenchido caso o usuário erre a senha.
+- Login: Autenticação de usuários com verificação de credenciais no banco de dados.
+- Cadastro: Criação de novas contas com validação de dados e armazenamento seguro de senhas com hash.
+- Recuperação de Senha: Envio de link por e-mail com token e expiração (1 hora).
+- Gerenciamento de Usuários (admin): Listagem, edição (nome/email), redefinição de senha e exclusão de usuários via painel visual.
+- Controle de Acesso: Usuários comuns e administradores têm páginas diferentes.
+- Botão de acesso ao painel admin: exibido somente se o usuário for administrador, na página de boas-vindas.
+- Alertas e Feedback: Mensagens de erro, sucesso e confirmação visual via alert().
+- Efeito de Tremor: Campo de senha treme quando incorreto.
+- Persistência de dados: O campo de e-mail permanece preenchido após erro de login.
+
 Tecnologias Utilizadas:
 
-HTML: Estrutura das páginas web.
-CSS: Estilização das páginas web.
-JavaScript: Interatividade e funcionalidades no lado do cliente.
-PHP: Lógica do lado do servidor e comunicação com o banco de dados.
-MySQL: Armazenamento dos dados dos usuários.
+- HTML: Estrutura das páginas
+- CSS: Estilização moderna responsiva (botões, inputs, layout)
+- JavaScript: Interatividade, fetch, controle dinâmico do DOM
+- PHP: Backend, sessão, autenticação, envio de e-mail (PHPMailer)
+- MySQL: Banco de dados com tabela de usuários
+
 Estrutura do Projeto:
 
 projeto-login/
 ├── css/
-│   └── style.css
+│   ├── style.css
+│   └── admin.css
 ├── js/
-│   └── script.js
+│   ├── script.js
+│   └── admin.js
 ├── php/
 │   ├── cadastro.php
 │   ├── login.php
-│   ├── recuperar_senha.php
 │   ├── logout.php
+│   ├── solicitar_reset.php
 │   ├── processar_reset.php
-│   └── solicitar_reset.php
+│   ├── editar_usuario.php
+│   ├── remover_usuario.php
+│   ├── listar_usuarios.php
+│   └── conexao.php
 ├── composer.json
 ├── composer.lock
-├── vendor/
-├── index.html
+├── vendor/phpmailer files
+├── index.php
 ├── cadastro.html
 ├── recuperar_senha.html
-├── redefinir_senha.html
-├── gerenciamento_usuarios.html
 ├── redefinir_senha.php
-├── welcome.html
-└── sql
-     └── banco.sql
+├── welcome.php
+├── admin.php
+└── sql/
+    └── banco.sql
 
-Versão das tecnologias utilizadas para teste
-Apache: 2.4.62.1
-PHP: 8.3.14
-MYSQL: 9.1.0
+Requisitos e Versões usadas:
+
+- Apache: 2.4.62.1
+- PHP: 8.3.14
+- MySQL: 9.1.0 (MariaDB ou compatível)
+- Composer para gerenciar dependências do PHPMailer
 
 Instalação:
 
-Clone o repositório para o seu ambiente local.
-Crie um banco de dados MySQL chamado usuarios.
-Importe o arquibo banco.sql usuarios.
-Configure as credenciais do banco de dados nos arquivos PHP (pasta php, nos arquivos login.php ecadastro.php).
-Configure as credenciais do seu email no arquivo solicitar_reset.php da past PHP.
-Inicie um servidor web (como o WAMP ou XAMPP) e acesse a página index.html no seu navegador.
+1. Clone ou extraia o projeto para a pasta `www` do WAMP/XAMPP.
+2. Crie um banco de dados MySQL chamado `usuarios`.
+3. Importe o arquivo `sql/banco.sql` no seu banco de dados.
+4. Configure `php/conexao.php` com os dados do seu banco.
+5. Configure `php/solicitar_reset.php` com as credenciais do seu e-mail (para envio do link de redefinição).
+6. Acesse `http://localhost/index.php` no navegador.
+
 Como Usar:
 
-Acesse a página de login (index.html).
-Faça login com uma conta existente ou crie uma nova conta na página de cadastro.
-Você pode dar permissões de administrador para um usuário alterando o valor de is_admin no banco de dados de 0 para 1.
-Se você for um administrador, será redirecionado para a página de administração (admin_page.html). Caso contrário, será redirecionado para a página de boas-vindas (welcome.html).
-Use as funcionalidades disponíveis para gerenciar usuários e realizar outras ações.
+- Faça login ou cadastre um novo usuário.
+- Para tornar um usuário administrador, altere o campo `is_admin` para `1` diretamente no banco de dados.
+- Após login:
+  - Usuários comuns são redirecionados para `welcome.php`.
+  - Usuários admin também vão para `welcome.php`, com acesso a um botão que redireciona para `admin.php`.
+- Em `admin.php`, é possível gerenciar usuários com ações como editar, resetar senha e excluir usuários.
+
 Observações:
 
-Este projeto é um exemplo básico e pode ser aprimorado com mais funcionalidades e segurança.
-Lembre-se de implementar práticas de segurança, como validação de entrada e proteção contra injeção de SQL.
-Personalize o código e o design para atender às suas necessidades.
+- Este projeto é educativo e pode ser expandido com mais recursos (validação backend, tokens, logs e etc).
+- Segurança básica foi aplicada (hash de senha, proteção de sessão, token de recuperação).
+- Recomendo a adição de tokens, reCAPTCHA e validação avançada em produção.
+
+Desenvolvido por Jonathan Ricardo
+https://www.linkedin.com/in/jonathan-ricardo/
