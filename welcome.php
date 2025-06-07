@@ -8,9 +8,12 @@ if (!isset($_SESSION['email'])) {
 }
 
 $email = $_SESSION['email'];
-$result = $conn->query("SELECT is_admin FROM usuarios WHERE email = '$email'");
+$result = $conn->query("SELECT nome, is_admin FROM usuarios WHERE email = '$email'");
 $user = $result->fetch_assoc();
 $isAdmin = (int)$user['is_admin'] === 1;
+$nomeCompleto = $user['nome'];
+$primeiroNome = explode(' ', trim($nomeCompleto))[0];
+$nome = htmlspecialchars($primeiroNome);
 ?>
 
 <!DOCTYPE html>
@@ -23,15 +26,15 @@ $isAdmin = (int)$user['is_admin'] === 1;
 </head>
 <body>
   <div class="container">
-    <h2>Bem-vindo!</h2>
+    <h2>Bem-vindo <?php echo $nome; ?>!</h2>
 
     <?php if ($isAdmin): ?>
-      <p>Você está logado como um <strong>usuário administrador</strong>.</p>
-      <p>Aqui você pode gerenciar suas informações e realizar outras ações permitidas.</p>
+      <p>Aqui você pode gerenciar suas informações e realizar outras ações permitidas.</p>      
       <p><a href="admin.php"><button class="admin-btn">Ir para página de administração</button></a></p>
+      <p><a href="perfil.php"><button class="admin-btn">Atualizar meus dados</button></a></p>
     <?php else: ?>
-      <p>Você está logado como um <strong>usuário normal</strong>.</p>
       <p>Aqui você pode gerenciar suas informações e realizar outras ações permitidas.</p>
+      <p><a href="perfil.php"><button class="admin-btn">Atualizar meus dados</button></a></p>
     <?php endif; ?>
 
     <p><a href="php/logout.php">Sair</a></p>
